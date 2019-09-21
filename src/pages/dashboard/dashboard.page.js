@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const MoviesDashboardPage = () => (
+export const DashboardPage = () => (
     <div className="d-flex justify-content-center align-items-center">
         Hello
     </div>
 );
 
-export default MoviesDashboardPage;
+export default DashboardPage;
