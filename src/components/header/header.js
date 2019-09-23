@@ -5,12 +5,12 @@ import { startLogout } from "../../actions/auth";
 
 export const Header = ({ startLogout }) => (
   <header className="header">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a className="navbar-brand" href="#">
         Yep Nop Movies
       </a>
       <button
-        class="navbar-toggler"
+        className="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbar"
@@ -18,16 +18,16 @@ export const Header = ({ startLogout }) => (
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span className="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbar">
-        <div class="navbar-nav mr-auto">
-          <a class="nav-item nav-link active" href="#">
+      <div className="collapse navbar-collapse" id="navbar">
+        <div className="navbar-nav mr-auto">
+          <a className="nav-item nav-link active" href="#">
             Dashboard
           </a>
         </div>
-        <div class="navbar-nav">
-          <a class="nav-item nav-link" href="#" onClick={startLogout}>
+        <div className="navbar-nav">
+          <a className="nav-item nav-link" href="#" onClick={startLogout}>
             Logout
           </a>
         </div>

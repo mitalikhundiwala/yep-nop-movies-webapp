@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import "../node_modules/bootstrap/dist/css/bootstrap.css";
-import "../node_modules/bootstrap/dist/css/bootstrap-grid.css";
+import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 import "./styles/styles.scss";
 import LoadingPage from "./pages/loading/loading.page";
@@ -12,8 +11,6 @@ import configureStore from "./store/configureStore";
 import { firebase } from "./firebase/firebase";
 
 import AppRouter, { history } from "./routers/AppRouter";
-
-import { startSetMovies } from "./actions/movies";
 
 const store = configureStore();
 const jsx = (
@@ -32,14 +29,13 @@ const renderApp = () => {
 
 ReactDOM.render(<LoadingPage />, document.getElementById("root"));
 
-firebase.auth().onAuthStateChanged(async user => {
+firebase.auth().onAuthStateChanged(user => {
   if (user) {
     store.dispatch(login(user.uid));
     renderApp();
     if (history.location.pathname === "/") {
-      history.push("/dashboard");
+      history.push("/movies");
     }
-    const movies = await store.dispatch(startSetMovies());
   } else {
     store.dispatch(logout());
     renderApp();

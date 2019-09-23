@@ -1,8 +1,14 @@
-export default (state = [], action) => {
-    console.log(action);
+export default (state = {}, action) => {
   switch (action.type) {
     case "SET_MOVIES":
-      return action.movies;
+      const movies = {};
+      action.movies.forEach(movie => {
+        movies[`${movie.movieId}`] = movie;
+      });
+      return {
+        ...state,
+        ...movies
+      };
     default:
       return state;
   }

@@ -1,9 +1,25 @@
-import React from 'react';
+import React from "react";
+import { connect } from "react-redux";
+import MovieList from "../../components/movies-list/movie-list";
 
-export const DashboardPage = () => (
-    <div className="d-flex justify-content-center align-items-center">
-        Hello
-    </div>
-);
+import { startSetMovies } from "../../actions/movies";
 
-export default DashboardPage;
+export class DashboardPage extends React.Component {
+  componentDidMount() {
+    this.props.startSetMovies();
+  }
+  render() {
+    return <MovieList></MovieList>;
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    startSetMovies: () => dispatch(startSetMovies())
+  };
+};
+
+export default connect(
+  undefined,
+  mapDispatchToProps
+)(DashboardPage);
