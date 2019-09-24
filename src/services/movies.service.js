@@ -16,4 +16,18 @@ export default class MoviesService {
       throw new Error(response.statusText);
     }
   }
+
+  static async retriveMovie(movieId) {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}?api_key=8eb5e86895ea1fa8a6953985cfcf865f&language=en-US`
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+      const movie = MovieAdapter.fromResponse(data);
+      return movie;
+    } else {
+      throw new Error(response.statusText);
+    }
+  }
 }

@@ -12,3 +12,16 @@ export const startSetMovies = () => {
     return movies;
   };
 };
+
+export const setMovie = (movie) => ({
+  type: "SET_MOVIE",
+  movie
+});
+
+export const startSetMovie = (movieId) => {
+  return async(dispatch, getState) => {
+    const movie = await MoviesService.retriveMovie(movieId);
+    dispatch(setMovie(movie));
+    return movie;
+  }
+}

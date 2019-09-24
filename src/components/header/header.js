@@ -6,7 +6,7 @@ import { startLogout } from "../../actions/auth";
 export const Header = ({ startLogout }) => (
   <header className="header">
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">
+      <a className="navbar-brand" href="/">
         Yep Nop Movies
       </a>
       <button
@@ -22,7 +22,7 @@ export const Header = ({ startLogout }) => (
       </button>
       <div className="collapse navbar-collapse" id="navbar">
         <div className="navbar-nav mr-auto">
-          <a className="nav-item nav-link active" href="#">
+          <a className="nav-item nav-link active" href="/">
             Dashboard
           </a>
         </div>

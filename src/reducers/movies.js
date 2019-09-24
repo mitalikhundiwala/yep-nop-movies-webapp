@@ -9,6 +9,13 @@ export default (state = {}, action) => {
         ...state,
         ...movies
       };
+    case "SET_MOVIE":
+      const fetchedMovies = state.movies || {};
+      fetchedMovies[`${action.movie.movieId}`] = action.movie;
+      return {
+        ...state,
+        ...fetchedMovies
+      };
     default:
       return state;
   }
