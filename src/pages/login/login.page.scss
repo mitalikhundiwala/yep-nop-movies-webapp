@@ -1,0 +1,17 @@
+.page--login {
+  background: url("/images/bg.jpg");
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+
+  &__login-container {
+    background: fade-out($color: white, $amount: 0.15);
+    border-radius: 3px;
+    text-align: center;
+    width: 25rem;
+  }
+
+  &__login-title {
+    line-height: 1;
+  }
+}

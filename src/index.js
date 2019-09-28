@@ -1,11 +1,10 @@
 import React from "react";
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import "../node_modules/bootstrap/dist/css/bootstrap.css";
-import "../node_modules/bootstrap/dist/css/bootstrap-grid.css";
+import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 import "./styles/styles.scss";
-import LoadingPage from "./components/LoadingPage";
+import LoadingPage from "./pages/loading/loading.page";
 import { login, logout } from "./actions/auth";
 
 import configureStore from "./store/configureStore";
@@ -35,7 +34,7 @@ firebase.auth().onAuthStateChanged(user => {
     store.dispatch(login(user.uid));
     renderApp();
     if (history.location.pathname === "/") {
-      history.push("/dashboard");
+      history.push("/movies");
     }
   } else {
     store.dispatch(logout());
