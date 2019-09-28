@@ -1,12 +1,13 @@
 import * as firebase from "firebase";
+console.log(process.env.FIREBASE_API_KEY);
+
 const config = {
-  apiKey: "AIzaSyBrEJM9kvSIcNFAUE59B4KzvfvfgaF7Tyo",
-  authDomain: "yep-nope-movies.firebaseapp.com",
-  databaseURL: "https://yep-nope-movies.firebaseio.com",
-  projectId: "yep-nope-movies",
-  storageBucket: "yep-nope-movies.appspot.com",
-  messagingSenderId: "468433325901",
-  appId: "1:468433325901:web:0404021667325b3f31f104"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID
 };
 
 firebase.initializeApp(config);
@@ -21,21 +22,3 @@ export {
   googleAuthProvider,
   database as default
 };
-
-// database
-//     .ref()
-//     .set({
-//         name: 'Mitali Patel',
-//         age: 31,
-//         isSingle: false,
-//         location: {
-//             city: 'Dubai',
-//             country: 'UAE',
-//         },
-//     })
-//     .then(() => {
-//         console.log('Data is saved');
-//     })
-//     .catch((e) => {
-//         console.log('This failed.', e);
-//     });
