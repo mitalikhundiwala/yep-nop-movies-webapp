@@ -1,11 +1,16 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import MovieList from "../../components/movies-list/movie-list";
 
 import { startSetMovies } from "../../actions/movies";
+import Movie from "../../models/movie";
 
-export class DashboardPage extends React.Component<any> {
-  props: any;
+interface IProps {
+  startSetMovies: () => Promise<Movie[]>;
+}
+
+export class DashboardPage extends Component<IProps> {
+  props: IProps;
 
   componentDidMount() {
     this.props.startSetMovies();

@@ -1,10 +1,16 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { startSetMovie } from "../../actions/movies";
+import Movie from "../../models/movie";
 
-export class MovieDetailPage extends React.Component<any> {
-  props: any;
+interface IProps {
+  startSetMovie: () => Promise<Movie>;
+  movie: Movie;
+}
+
+export class MovieDetailPage extends Component<IProps> {
+  props: IProps;
 
   componentDidMount() {
     this.props.startSetMovie();
@@ -42,13 +48,13 @@ export class MovieDetailPage extends React.Component<any> {
   }
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state, props): Partial<IProps> => {
   return {
     movie: state.movies[props.match.params.id]
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch, props): Partial<IProps> => {
   return {
     startSetMovie: () => dispatch(startSetMovie(props.match.params.id))
   };

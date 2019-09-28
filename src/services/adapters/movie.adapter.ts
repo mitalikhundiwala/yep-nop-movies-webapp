@@ -1,7 +1,7 @@
 import Movie from "../../models/movie";
 
 export default class MovieAdapter {
-  static fromResponse(data) {
+  static fromResponse(data: any): Movie {
     return new Movie({
       movieId: data.id,
       name: data.title,
@@ -13,7 +13,7 @@ export default class MovieAdapter {
       poster_image: `https://image.tmdb.org/t/p/w500/${data.poster_path}`,
       // themeColorLight: data.themeColorLight,
       // themeColorDark: data.themeColorDark,
-      isAdult: data.adult,
+      isAdult: data.adult
       // whichWood: data.whichWood,
       // website: data.website,
       // tmdbId: data.tmdbId,

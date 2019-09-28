@@ -1,9 +1,13 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { connect } from "react-redux";
 import { startLogin } from "../../actions/auth";
 import "./login.page.scss";
 
-const LoginPage = ({ startLogin }) => {
+interface IProps {
+  startLogin: () => Promise<any>;
+}
+
+const LoginPage: FunctionComponent<IProps> = ({ startLogin }: IProps) => {
   return (
     <div className="page--login d-flex justify-content-center align-items-center">
       <div className="page--login__login-container pt-5 pb-5 pl-4 pr-4">
@@ -17,7 +21,7 @@ const LoginPage = ({ startLogin }) => {
   );
 };
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch): IProps => ({
   startLogin: () => dispatch(startLogin())
 });
 
