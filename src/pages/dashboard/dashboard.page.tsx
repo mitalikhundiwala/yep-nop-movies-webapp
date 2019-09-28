@@ -4,7 +4,9 @@ import MovieList from "../../components/movies-list/movie-list";
 
 import { startSetMovies } from "../../actions/movies";
 
-export class DashboardPage extends React.Component {
+export class DashboardPage extends React.Component<any> {
+  props: any;
+
   componentDidMount() {
     this.props.startSetMovies();
   }
@@ -13,7 +15,7 @@ export class DashboardPage extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     startSetMovies: () => dispatch(startSetMovies())
   };
