@@ -10,9 +10,7 @@
   "author": "Mitali Patel",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/core": "^7.6.2",
     "@types/lodash": "^4.14.141",
     "@types/react": "^16.9.3",
     "@types/react-redux": "^7.1.4",
