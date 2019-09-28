@@ -16,8 +16,18 @@ export const login = uid => ({
 
 export const startLogin = () => {
   return () => {
-    // return firebase.auth().signInWithPopup(facebookAuthProvider);
     return firebase.auth().signInWithPopup(googleAuthProvider);
+  };
+};
+
+export const loginWithFacebook = uid => ({
+  type: AuthAction.LOGIN,
+  uid
+});
+
+export const startLoginWithFacebook = () => {
+  return () => {
+    return firebase.auth().signInWithPopup(facebookAuthProvider);
   };
 };
 
