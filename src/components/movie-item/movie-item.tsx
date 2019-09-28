@@ -1,8 +1,9 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Movie from "../../models/movie";
 
-export const MovieListItem = ({
+export const MovieListItem: FunctionComponent<Movie> = ({
   movieId,
   name,
   poster_image,

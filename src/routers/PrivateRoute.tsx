@@ -1,10 +1,15 @@
-import React from "react";
+import React, { FunctionComponent, Component, ComponentClass } from "react";
 import { connect } from "react-redux";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, RouteProps } from "react-router-dom";
 
-import Header from '../components/header/header';
+import Header from "../components/header/header";
 
-export const PrivateRoute = ({
+interface IProps extends RouteProps {
+  isAuthenticated: boolean;
+  component: FunctionComponent;
+}
+
+export const PrivateRoute: FunctionComponent<IProps> = ({
   isAuthenticated,
   component: Component,
   ...rest

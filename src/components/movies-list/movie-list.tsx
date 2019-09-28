@@ -1,12 +1,17 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { connect } from "react-redux";
 import { map } from "lodash";
 
 import MovieListItem from "../movie-item/movie-item";
+import Movie from "../../models/movie";
 
 import "./movie-list.scss";
 
-const MovieList = props => {
+interface IProps {
+  movies: Movie[];
+}
+
+const MovieList: FunctionComponent<IProps> = props => {
   return (
     <div className="d-flex justify-content-center align-items-center">
       <div className="card-columns">

@@ -1,7 +1,16 @@
-import { firebase, facebookAuthProvider, googleAuthProvider } from "../firebase/firebase";
+import {
+  firebase,
+  facebookAuthProvider,
+  googleAuthProvider
+} from "../firebase/firebase";
+
+export enum AuthAction {
+  LOGIN = "LOGIN",
+  LOGOUT = "LOGOUT"
+}
 
 export const login = uid => ({
-  type: "LOGIN",
+  type: AuthAction.LOGIN,
   uid
 });
 
@@ -13,7 +22,7 @@ export const startLogin = () => {
 };
 
 export const logout = () => ({
-  type: "LOGOUT"
+  type:  AuthAction.LOGOUT
 });
 
 export const startLogout = () => {

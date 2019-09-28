@@ -1,9 +1,13 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { startLogout } from "../../actions/auth";
 
-export const Header = ({ startLogout }) => (
+interface IProps {
+  startLogout: () => Promise<void>;
+}
+
+export const Header: FunctionComponent<IProps> = ({ startLogout }) => (
   <header className="header">
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">
@@ -36,7 +40,7 @@ export const Header = ({ startLogout }) => (
   </header>
 );
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch): IProps => ({
   startLogout: () => dispatch(startLogout())
 });
 

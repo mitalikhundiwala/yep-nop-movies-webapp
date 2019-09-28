@@ -1,10 +1,17 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import MovieList from "../../components/movies-list/movie-list";
 
 import { startSetMovies } from "../../actions/movies";
+import Movie from "../../models/movie";
 
-export class DashboardPage extends React.Component {
+interface IProps {
+  startSetMovies: () => Promise<Movie[]>;
+}
+
+export class DashboardPage extends Component<IProps> {
+  props: IProps;
+
   componentDidMount() {
     this.props.startSetMovies();
   }
@@ -13,7 +20,7 @@ export class DashboardPage extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     startSetMovies: () => dispatch(startSetMovies())
   };

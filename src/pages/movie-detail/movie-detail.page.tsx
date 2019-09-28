@@ -1,9 +1,17 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { startSetMovie } from "../../actions/movies";
+import Movie from "../../models/movie";
 
-export class MovieDetailPage extends React.Component {
+interface IProps {
+  startSetMovie: () => Promise<Movie>;
+  movie: Movie;
+}
+
+export class MovieDetailPage extends Component<IProps> {
+  props: IProps;
+
   componentDidMount() {
     this.props.startSetMovie();
   }
@@ -14,16 +22,20 @@ export class MovieDetailPage extends React.Component {
         <div className="card mb-3">
           <div className="row no-gutters">
             <div className="col-md-4">
-              <img src={this.props.movie.poster_image} className="card-img" alt="..." />
+              <img
+                src={this.props.movie.poster_image}
+                className="card-img"
+                alt="..."
+              />
             </div>
             <div className="col-md-8">
               <div className="card-body">
                 <h5 className="card-title">{this.props.movie.name}</h5>
+                <p className="card-text">{this.props.movie.synopsis}</p>
                 <p className="card-text">
-                  {this.props.movie.synopsis}
-                </p>
-                <p className="card-text">
-                  <small className="text-muted">{this.props.movie.releaseDate}</small>
+                  <small className="text-muted">
+                    {this.props.movie.releaseDate}
+                  </small>
                 </p>
               </div>
             </div>
@@ -36,13 +48,13 @@ export class MovieDetailPage extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state, props): Partial<IProps> => {
   return {
     movie: state.movies[props.match.params.id]
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch, props): Partial<IProps> => {
   return {
     startSetMovie: () => dispatch(startSetMovie(props.match.params.id))
   };

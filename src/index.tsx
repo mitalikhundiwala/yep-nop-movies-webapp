@@ -1,7 +1,9 @@
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 import "./styles/styles.scss";
 import LoadingPage from "./pages/loading/loading.page";
