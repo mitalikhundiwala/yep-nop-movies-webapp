@@ -27,7 +27,10 @@ export const loginWithFacebook = uid => ({
 
 export const startLoginWithFacebook = () => {
   return () => {
-    return firebase.auth().signInWithPopup(facebookAuthProvider);
+    return firebase.auth().signInWithPopup(facebookAuthProvider).then( (result) => {
+      console.log(result.credential);
+      return result;
+    });
   };
 };
 

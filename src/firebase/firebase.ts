@@ -1,5 +1,4 @@
 import * as firebase from "firebase";
-console.log(process.env.FIREBASE_API_KEY);
 
 const config = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -15,6 +14,8 @@ firebase.initializeApp(config);
 const database = firebase.database();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 const facebookAuthProvider = new firebase.auth.FacebookAuthProvider();
+facebookAuthProvider.addScope('user_friends');
+
 
 export {
   firebase,
