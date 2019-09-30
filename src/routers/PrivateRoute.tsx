@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Route, Redirect, RouteProps } from "react-router-dom";
 
 import Header from "../components/header/header";
+import { IStore } from "../store/configureStore";
 
 interface IProps extends RouteProps {
   isAuthenticated: boolean;
@@ -13,8 +14,8 @@ export const PrivateRoute: FunctionComponent<IProps> = ({
   isAuthenticated,
   component: Component,
   ...rest
-}) => (
-  <Route
+}) => {
+  return (<Route
     {...rest}
     component={props =>
       isAuthenticated ? (
@@ -26,11 +27,11 @@ export const PrivateRoute: FunctionComponent<IProps> = ({
         <Redirect to="/" />
       )
     }
-  />
-);
+  />)
+};
 
-const mapStateToProps = state => ({
-  isAuthenticated: !!state.auth && !!state.auth.uid
+const mapStateToProps = (state: IStore) => ({
+  isAuthenticated: !!state.auth.user
 });
 
 export default connect(mapStateToProps)(PrivateRoute);

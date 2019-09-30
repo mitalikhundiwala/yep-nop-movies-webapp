@@ -13,6 +13,7 @@ export class DashboardPage extends Component<IProps> {
   props: IProps;
 
   componentDidMount() {
+    console.log('Component Mounting');
     this.props.startSetMovies();
   }
   render() {

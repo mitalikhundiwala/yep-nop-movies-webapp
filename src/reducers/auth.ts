@@ -1,19 +1,28 @@
 import { AuthAction } from "../actions/auth";
+import User from "../models/user";
 
 export interface IState {
-  uid: string | undefined;
+  user: User | undefined;
+  accessToken: string | undefined;
+  refreshToken: string | undefined;
 }
 
-const defaultState: IState = { uid: undefined };
+const defaultState: IState = {
+  user: undefined,
+  accessToken: undefined,
+  refreshToken: undefined
+};
 
 export default (state = defaultState, action): IState => {
   switch (action.type) {
     case AuthAction.LOGIN:
       return {
-        uid: action.uid
+        user: action.payload.user,
+        accessToken: action.payload.accessToken,
+        refreshToken: action.payload.refreshToken
       };
     case AuthAction.LOGOUT:
-      return { uid: undefined };
+      return defaultState;
     default:
       return state;
   }
