@@ -1,5 +1,6 @@
 import { MoviesAction } from "../actions/movies";
 import Movie from "../models/movie";
+import { AuthAction } from "../actions/auth";
 
 export interface IState {
   movies: { [key: string]: Movie };
@@ -25,6 +26,9 @@ export default (state: IState = defaultState, action): IState => {
         ...state,
         ...fetchedMovies
       };
+
+    case AuthAction.LOGOUT:
+      return defaultState;
     default:
       return state;
   }

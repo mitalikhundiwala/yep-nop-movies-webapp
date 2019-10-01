@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { startLogout } from "../../actions/auth";
+import { startLogout, logout } from "../../actions/auth";
 
 interface IProps {
   startLogout: () => Promise<void>;
@@ -41,7 +41,9 @@ export const Header: FunctionComponent<IProps> = ({ startLogout }) => (
 );
 
 const mapDispatchToProps = (dispatch): IProps => ({
-  startLogout: () => dispatch(startLogout())
+  startLogout: () => {
+    return dispatch(startLogout());
+  }
 });
 
 export default connect(

@@ -3,43 +3,40 @@ import {
   facebookAuthProvider,
   googleAuthProvider
 } from "../firebase/firebase";
+import User from "../models/user";
 
 export enum AuthAction {
   LOGIN = "LOGIN",
   LOGOUT = "LOGOUT"
 }
 
-export const login = uid => ({
+export const login = (
+  user: User,
+  accessToken: string,
+  refreshToken: string
+) => ({
   type: AuthAction.LOGIN,
-  uid
-});
-
-export const startLogin = () => {
-  return () => {
-    return firebase.auth().signInWithPopup(googleAuthProvider);
-  };
-};
-
-export const loginWithFacebook = uid => ({
-  type: AuthAction.LOGIN,
-  uid
+  payload: {
+    user,
+    accessToken,
+    refreshToken
+  }
 });
 
 export const startLoginWithFacebook = () => {
-  return () => {
-    return firebase.auth().signInWithPopup(facebookAuthProvider).then( (result) => {
-      console.log(result.credential);
-      return result;
-    });
+  return async () => {
+    const result = await firebase.auth().signInWithPopup(facebookAuthProvider);
+    return result;
   };
 };
 
 export const logout = () => ({
-  type:  AuthAction.LOGOUT
+  type: AuthAction.LOGOUT
 });
 
 export const startLogout = () => {
-  return () => {
+  return dispatch => {
+    dispatch(logout());
     return firebase.auth().signOut();
   };
 };
