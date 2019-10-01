@@ -42,10 +42,6 @@ firebase.auth().onAuthStateChanged(async response => {
       history.push("/movies");
     }
   } else {
-    console.log('Before Logout');
-
-    // store.dispatch(logout());
-    console.log('After Logout');
     renderApp();
     history.push("/");
   }
