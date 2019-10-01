@@ -1,11 +1,11 @@
 export default class User {
   userId: string;
   name: string;
-  photoUrl: string;
+  photoURL: string;
 
   constructor(data) {
     this.userId = data.userId;
     this.name = data.name;
-    this.photoUrl = data.photoUrl;
+    this.photoURL = data.photoURL;
   }
 }

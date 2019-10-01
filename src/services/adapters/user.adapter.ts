@@ -5,7 +5,7 @@ export default class UserAdapter {
     return new User({
       userId: data.uid,
       name: data.displayName,
-      photoUrl: data.photoUrl
+      photoURL: data.photoURL
     });
   }
 }
