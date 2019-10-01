@@ -12,7 +12,8 @@ export const setMovies = movies => ({
 
 export const startSetMovies = () => {
   return async (dispatch, getState) => {
-    const movies = await MoviesService.retriveMovies();
+    const accessToken = getState().auth.accessToken;
+    const movies = await MoviesService.retriveMovies(accessToken);
     dispatch(setMovies(movies));
     return movies;
   };
@@ -25,7 +26,8 @@ export const setMovie = movie => ({
 
 export const startSetMovie = movieId => {
   return async (dispatch, getState) => {
-    const movie = await MoviesService.retriveMovie(movieId);
+    const accessToken = getState().auth.accessToken;
+    const movie = await MoviesService.retriveMovie(movieId, accessToken);
     dispatch(setMovie(movie));
     return movie;
   };

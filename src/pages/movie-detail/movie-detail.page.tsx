@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { startSetMovie } from "../../actions/movies";
 import Movie from "../../models/movie";
+import { IStore } from "../../store/configureStore";
 
 interface IProps {
   startSetMovie: () => Promise<Movie>;
@@ -48,9 +49,9 @@ export class MovieDetailPage extends Component<IProps> {
   }
 }
 
-const mapStateToProps = (state, props): Partial<IProps> => {
+const mapStateToProps = (state: IStore, props): Partial<IProps> => {
   return {
-    movie: state.movies[props.match.params.id]
+    movie: state.movies.entities[props.match.params.id]
   };
 };
 

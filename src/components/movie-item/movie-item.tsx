@@ -16,7 +16,6 @@ export const MovieListItem: FunctionComponent<Movie> = ({
       <Link className="card-link" to={`/movies/${movieId}`}>
         <h5 className="card-title">{name}</h5>
       </Link>
-      <p className="card-text">{synopsis}</p>
       <p className="card-text">
         <small className="text-muted">{releaseDate}</small>
       </p>
