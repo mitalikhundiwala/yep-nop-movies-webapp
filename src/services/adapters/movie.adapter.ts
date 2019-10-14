@@ -11,6 +11,8 @@ export default class MovieAdapter {
       releaseDate: data.releaseDate,
       synopsis: data.synopsis,
       poster_image: data.posterImageURL,
+      backdropImageURL: data.backdropImageURL,
+      thumbnailImageURL: data.thumbnailImageURL,
       themeColorLight: data.themeColorLight,
       themeColorDark: data.themeColorDark,
       isAdult: data.isAdult,

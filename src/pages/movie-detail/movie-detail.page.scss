@@ -1,0 +1,30 @@
+.banner {
+    height: 320px;
+    overflow: hidden;
+
+    .bg-poster {
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: block;
+        background-position: center center;
+        margin: 0 auto;
+        object-fit: cover;
+        transition: all .5s ease;
+        filter: blur(20px);
+    }
+}
+
+.thumnail-image {
+    width: 200px;
+}
+
+.card-body {
+    margin: -190px 0 0;
+}
+
+.details {
+    color: white;
+    // text-shadow: 3px 3px 0px rgba(0,0, 0, 0.5);
+}

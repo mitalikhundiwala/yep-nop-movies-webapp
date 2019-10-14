@@ -7,6 +7,8 @@ export default class Movie {
   releaseDate: string;
   synopsis: string;
   poster_image: string;
+  backdropImageURL: string;
+  thumbnailImageURL: string;
   themeColorLight: string;
   themeColorDark: string;
   isAdult: string;
@@ -15,10 +17,14 @@ export default class Movie {
   tmdbId: string;
   imdbId: string;
   facebookId: string;
-  genres: string;
-  directors: string;
-  musicDirectors: string;
-  cast: string;
+  genres: Array<any>;
+  genreString: string;
+  directors: Array<any>;
+  directorString: string;
+  musicDirectors: Array<any>;
+  musicDirectorsString: string;
+  cast: Array<any>;
+  castString: string;
   createdAt: Date;
   updatedAt: Date;
 
@@ -31,6 +37,8 @@ export default class Movie {
     this.releaseDate = data.releaseDate;
     this.synopsis = data.synopsis;
     this.poster_image = data.poster_image;
+    this.backdropImageURL = data.backdropImageURL;
+    this.thumbnailImageURL = data.thumbnailImageURL;
     this.themeColorLight = data.themeColorLight;
     this.themeColorDark = data.themeColorDark;
     this.isAdult = data.isAdult;
@@ -40,10 +48,30 @@ export default class Movie {
     this.imdbId = data.imdbId;
     this.facebookId = data.facebookId;
     this.genres = data.genres;
+    this.genreString = this.getGenreString();
     this.directors = data.directors;
+    this.directorString = this.getDirectorString();
     this.musicDirectors = data.musicDirectors;
+    this.musicDirectorsString = this.getMusicDirectorString();
     this.cast = data.cast;
+    this.castString = this.getCastString();
     this.createdAt = data.createdAt;
     this.updatedAt = data.updatedAt;
+  }
+
+  getGenreString() {
+    return this.genres.map(genre => genre.name).toString();
+  }
+
+  getDirectorString() {
+    return this.directors.map(director => director.name).toString();
+  }
+
+  getMusicDirectorString() {
+    return this.musicDirectors.map(director => director.name).toString();
+  }
+
+  getCastString() {
+    return this.cast.map(cast => cast.name).toString();
   }
 }

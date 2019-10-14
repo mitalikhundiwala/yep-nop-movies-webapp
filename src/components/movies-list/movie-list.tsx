@@ -14,14 +14,17 @@ interface IProps {
 
 const MovieList: FunctionComponent<IProps> = props => {
   return (
-    <div className="d-flex justify-content-center align-items-center">
-      <div className="card-columns">
-        {
-          map(props.movies, movie => {
-          return <MovieListItem key={movie.movieId} {...movie} />;
-        })}
+    <>
+      <p className="h3 mt-3 mb-3">Upcoming Movies</p>
+
+      <div className="d-flex justify-content-center align-items-center">
+        <div className="row">
+          {map(props.movies, movie => {
+            return <MovieListItem key={movie.movieId} {...movie} />;
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

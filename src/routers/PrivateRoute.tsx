@@ -15,19 +15,23 @@ export const PrivateRoute: FunctionComponent<IProps> = ({
   component: Component,
   ...rest
 }) => {
-  return (<Route
-    {...rest}
-    component={props =>
-      isAuthenticated ? (
-        <div>
-          <Header />
-          <Component {...props} />
-        </div>
-      ) : (
-        <Redirect to="/" />
-      )
-    }
-  />)
+  return (
+    <Route
+      {...rest}
+      component={props =>
+        isAuthenticated ? (
+          <div>
+            <Header />
+            <div className="container">
+              <Component {...props} />
+            </div>
+          </div>
+        ) : (
+          <Redirect to="/" />
+        )
+      }
+    />
+  );
 };
 
 const mapStateToProps = (state: IStore) => ({
