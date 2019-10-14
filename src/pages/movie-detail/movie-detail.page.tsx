@@ -34,7 +34,7 @@ export class MovieDetailPage extends Component<IProps> {
               <div style={sectionStyle} className="bg-poster"></div>
             </div>
 
-            <div className="card-body">
+            <div className="card-body movie-info-container">
               <div className="row">
                 <div className="col-3">
                   <div className="">
