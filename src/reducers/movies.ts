@@ -3,10 +3,10 @@ import Movie from "../models/movie";
 import { AuthAction } from "../actions/auth";
 
 export interface IState {
-  movies: { [key: string]: Movie };
+  entities: { [key: string]: Movie };
 }
 
-const defaultState: IState = { movies: {} };
+const defaultState: IState = { entities: {} };
 
 export default (state: IState = defaultState, action): IState => {
   switch (action.type) {
@@ -17,14 +17,14 @@ export default (state: IState = defaultState, action): IState => {
       });
       return {
         ...state,
-        ...movies
+        entities: { ...state.entities, ...movies }
       };
     case MoviesAction.SET_MOVIE:
-      const fetchedMovies = state.movies || {};
+      const fetchedMovies = state.entities || {};
       fetchedMovies[`${action.movie.movieId}`] = action.movie;
       return {
         ...state,
-        ...fetchedMovies
+        entities: { ...state.entities, ...fetchedMovies }
       };
 
     case AuthAction.LOGOUT:

@@ -6,26 +6,31 @@ import MovieListItem from "../movie-item/movie-item";
 import Movie from "../../models/movie";
 
 import "./movie-list.scss";
+import { IStore } from "../../store/configureStore";
 
 interface IProps {
-  movies: Movie[];
+  movies: { [key: string]: Movie };
 }
 
 const MovieList: FunctionComponent<IProps> = props => {
   return (
-    <div className="d-flex justify-content-center align-items-center">
-      <div className="card-columns">
-        {map(props.movies, movie => {
-          return <MovieListItem key={movie.movieId} {...movie} />;
-        })}
+    <>
+      <p className="h3 mt-3 mb-3">Upcoming Movies</p>
+
+      <div className="d-flex justify-content-center align-items-center">
+        <div className="row">
+          {map(props.movies, movie => {
+            return <MovieListItem key={movie.movieId} {...movie} />;
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state: IStore, props) => {
   return {
-    movies: state.movies
+    movies: state.movies.entities
   };
 };
 
