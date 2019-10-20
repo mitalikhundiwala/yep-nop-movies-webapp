@@ -22,8 +22,10 @@ export const PrivateRoute: FunctionComponent<IProps> = ({
         isAuthenticated ? (
           <div>
             <Header />
-            <div className="container">
-              <Component {...props} />
+            <div className="container-fluid">
+              <div className="row">
+                <Component {...props} />
+              </div>
             </div>
           </div>
         ) : (

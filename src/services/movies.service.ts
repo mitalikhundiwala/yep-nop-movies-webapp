@@ -45,4 +45,84 @@ export default class MoviesService {
       throw new Error(response.statusText);
     }
   }
+
+  static async markAsFavorite(movieId: string, accessToken: string) {
+    const response = await fetch(
+      `${process.env.API_BASE_URL}/movies/favorites/${movieId}`,
+      {
+        method: "POST",
+        headers: new Headers({
+          Authorization: `Bearer ${accessToken}`
+        })
+      }
+    );
+
+    if (response.ok) {
+      const data: any = await response.json();
+      const movie: Movie = MovieAdapter.fromResponse(data);
+      return movie;
+    } else {
+      throw new Error(response.statusText);
+    }
+  }
+
+  static async markAsUnFavorite(movieId: string, accessToken: string) {
+    const response = await fetch(
+      `${process.env.API_BASE_URL}/movies/favorites/${movieId}`,
+      {
+        method: "DELETE",
+        headers: new Headers({
+          Authorization: `Bearer ${accessToken}`
+        })
+      }
+    );
+
+    if (response.ok) {
+      const data: any = await response.json();
+      const movie: Movie = MovieAdapter.fromResponse(data);
+      return movie;
+    } else {
+      throw new Error(response.statusText);
+    }
+  }
+
+  static async markAsWatched(movieId: string, accessToken: string) {
+    const response = await fetch(
+      `${process.env.API_BASE_URL}/movies/watched/${movieId}`,
+      {
+        method: "POST",
+        headers: new Headers({
+          Authorization: `Bearer ${accessToken}`
+        })
+      }
+    );
+
+    if (response.ok) {
+      const data: any = await response.json();
+      const movie: Movie = MovieAdapter.fromResponse(data);
+      return movie;
+    } else {
+      throw new Error(response.statusText);
+    }
+  }
+
+  static async markAsUnWatched(movieId: string, accessToken: string) {
+    const response = await fetch(
+      `${process.env.API_BASE_URL}/movies/watched/${movieId}`,
+      {
+        method: "DELETE",
+        headers: new Headers({
+          Authorization: `Bearer ${accessToken}`
+        })
+      }
+    );
+
+    if (response.ok) {
+      const data: any = await response.json();
+      const movie: Movie = MovieAdapter.fromResponse(data);
+      return movie;
+    } else {
+      throw new Error(response.statusText);
+    }
+  }
 }
