@@ -1,6 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import {RemoveRedEye, RemoveRedEyeOutlined, Favorite, FavoriteBorder} from '@material-ui/icons';
+import {
+  RemoveRedEye,
+  RemoveRedEyeOutlined,
+  Favorite,
+  FavoriteBorder,
+  ThumbDown,
+  ThumbUp,
+  ThumbDownOutlined,
+  ThumbUpOutlined
+} from "@material-ui/icons";
 
 import {
   markAsFavorite,
@@ -11,51 +20,70 @@ import {
 import Movie from "../../models/movie";
 
 interface IProps {
-  movieId: string;
   markAsFavorite: (movieId) => Promise<Movie>;
   markAsUnFavorite: (movieId) => Promise<Movie>;
   markAsWatched: (movieId) => Promise<Movie>;
   markAsUnWatched: (movieId) => Promise<Movie>;
+  movie: Movie;
+  movieId: string;
 }
 
 export class RatingComponent extends React.Component {
   props: IProps;
 
   onClickMarkAsFavorite = () => {
-    this.props.markAsFavorite(this.props.movieId);
+    this.props.markAsFavorite(this.props.movie.movieId);
   };
 
   onClickMarkAsUnFavorite = () => {
-    this.props.markAsUnFavorite(this.props.movieId);
+    this.props.markAsUnFavorite(this.props.movie.movieId);
   };
 
   onClickMarkAsWatched = () => {
-    this.props.markAsWatched(this.props.movieId);
+    this.props.markAsWatched(this.props.movie.movieId);
   };
 
   onClickMarkAsUnWatched = () => {
-    this.props.markAsUnWatched(this.props.movieId);
+    this.props.markAsUnWatched(this.props.movie.movieId);
   };
 
   render() {
+    console.log(this.props.movie);
     return (
       <div className="rating-panel d-flex">
         <div className="d-flex align-items-center watch-container p-3">
-          
-          <RemoveRedEye onClick={this.onClickMarkAsWatched}></RemoveRedEye>
-          <RemoveRedEyeOutlined onClick={this.onClickMarkAsUnWatched}></RemoveRedEyeOutlined>
+          {this.props.movie.isWatched ? (
+            <RemoveRedEye onClick={this.onClickMarkAsUnWatched}></RemoveRedEye>
+          ) : (
+            <RemoveRedEyeOutlined
+              onClick={this.onClickMarkAsWatched}
+            ></RemoveRedEyeOutlined>
+          )}
         </div>
         <div className="d-flex align-items-center favorite-container p-3">
-          <Favorite onClick={this.onClickMarkAsFavorite}></Favorite>
-          <FavoriteBorder  onClick={this.onClickMarkAsUnFavorite}></FavoriteBorder>
+          {this.props.movie.isFavorite ? (
+            <Favorite onClick={this.onClickMarkAsUnFavorite}></Favorite>
+          ) : (
+            <FavoriteBorder
+              onClick={this.onClickMarkAsFavorite}
+            ></FavoriteBorder>
+          )}
         </div>
-        <div className="rating-container"></div>
+        <div className="d-flex align-items-center favorite-container p-3">
+          {this.props.movie.rating ? (
+            <ThumbDownOutlined onClick={this.onClickMarkAsUnFavorite}></ThumbDownOutlined>
+          ) : (
+            <ThumbUpOutlined
+              onClick={this.onClickMarkAsFavorite}
+            ></ThumbUpOutlined>
+          )}
+        </div>
       </div>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch, props: IProps) => {
   return {
     markAsFavorite: () => dispatch(markAsFavorite(props.movieId)),
     markAsUnFavorite: () => dispatch(markAsUnFavorite(props.movieId)),
@@ -64,7 +92,13 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
+const mapStateToProps = (state, props: IProps) => {
+  return {
+    movie: state.movies.entities[props.movieId]
+  };
+};
+
 export default connect(
-  undefined,
+  mapStateToProps,
   mapDispatchToProps
 )(RatingComponent);

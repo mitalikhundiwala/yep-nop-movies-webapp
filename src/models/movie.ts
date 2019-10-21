@@ -25,6 +25,9 @@ export default class Movie {
   musicDirectorsString: string;
   cast: Array<any>;
   castString: string;
+  isFavorite: boolean;
+  isWatched: boolean;
+  rating: boolean;
   createdAt: Date;
   updatedAt: Date;
 
@@ -55,6 +58,9 @@ export default class Movie {
     this.musicDirectorsString = this.getMusicDirectorString();
     this.cast = data.cast;
     this.castString = this.getCastString();
+    this.isFavorite = data.isFavorite;
+    this.isWatched = data.isWatched;
+    this.rating = data.rating;
     this.createdAt = data.createdAt;
     this.updatedAt = data.updatedAt;
   }

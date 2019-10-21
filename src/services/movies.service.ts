@@ -58,9 +58,8 @@ export default class MoviesService {
     );
 
     if (response.ok) {
-      const data: any = await response.json();
-      const movie: Movie = MovieAdapter.fromResponse(data);
-      return movie;
+      await response.json();
+      return true;
     } else {
       throw new Error(response.statusText);
     }
@@ -78,15 +77,14 @@ export default class MoviesService {
     );
 
     if (response.ok) {
-      const data: any = await response.json();
-      const movie: Movie = MovieAdapter.fromResponse(data);
-      return movie;
+      await response.json();
+      return true;
     } else {
       throw new Error(response.statusText);
     }
   }
 
-  static async markAsWatched(movieId: string, accessToken: string) {
+  static async markAsWatched(movieId: string, accessToken: string): Promise<boolean> {
     const response = await fetch(
       `${process.env.API_BASE_URL}/movies/watched/${movieId}`,
       {
@@ -98,9 +96,8 @@ export default class MoviesService {
     );
 
     if (response.ok) {
-      const data: any = await response.json();
-      const movie: Movie = MovieAdapter.fromResponse(data);
-      return movie;
+      await response.json();
+      return true;
     } else {
       throw new Error(response.statusText);
     }
@@ -118,9 +115,8 @@ export default class MoviesService {
     );
 
     if (response.ok) {
-      const data: any = await response.json();
-      const movie: Movie = MovieAdapter.fromResponse(data);
-      return movie;
+      await response.json();
+      return true;
     } else {
       throw new Error(response.statusText);
     }
