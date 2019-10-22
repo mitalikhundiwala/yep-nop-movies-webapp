@@ -48,7 +48,6 @@ export class RatingComponent extends React.Component {
   };
 
   render() {
-    console.log(this.props.movie);
     return (
       <div className="rating-panel d-flex">
         <div className="d-flex align-items-center watch-container p-3">
