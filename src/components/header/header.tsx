@@ -1,48 +1,60 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { startLogout, logout } from "../../actions/auth";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
+import { startLogout } from "../../actions/auth";
 import { IStore } from "../../store/configureStore";
 import User from "../../models/user";
 
+import "./header.scss";
+
 interface IProps {
   startLogout: () => Promise<void>;
-  user: User
+  user: User;
 }
 
-export const Header: FunctionComponent<IProps> = ({ startLogout, user }) => (
-  <header className="header">
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="/">
-        Yep Nop Movies
-      </a>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbar"
-        aria-controls="navbar"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbar">
-        <div className="navbar-nav mr-auto">
-          <a className="nav-item nav-link active" href="/">
-            Dashboard
-          </a>
-        </div>
-        <span className="navbar-text"><img src={user.photoURL} />{user.name}</span>
-        <div className="navbar-nav">
-          <a className="nav-item nav-link" href="#" onClick={startLogout}>
-            Logout
-          </a>
-        </div>
-      </div>
-    </nav>
-  </header>
-);
+export const Header: FunctionComponent<IProps> = ({ startLogout, user }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
+  return (
+    <header className="header">
+      <Navbar color="light" light expand="md">
+        <NavbarBrand href="/">Yep Nop Movies</NavbarBrand>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                <img src={user.photoURL} className="user-photo" />
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem>{user.name}</DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>
+                  <a className="nav-link" href="#" onClick={startLogout}>
+                    Logout
+                  </a>
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    </header>
+  );
+};
 
 const mapDispatchToProps = (dispatch): Partial<IProps> => ({
   startLogout: () => {

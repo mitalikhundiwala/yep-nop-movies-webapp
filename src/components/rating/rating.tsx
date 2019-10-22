@@ -52,29 +52,35 @@ export class RatingComponent extends React.Component {
       <div className="rating-panel d-flex">
         <div className="d-flex align-items-center watch-container p-3">
           {this.props.movie.isWatched ? (
-            <RemoveRedEye onClick={this.onClickMarkAsUnWatched}></RemoveRedEye>
+            <a href="#" onClick={this.onClickMarkAsUnWatched}>
+              <RemoveRedEye></RemoveRedEye>
+            </a>
           ) : (
-            <RemoveRedEyeOutlined
-              onClick={this.onClickMarkAsWatched}
-            ></RemoveRedEyeOutlined>
+            <a href="#" onClick={this.onClickMarkAsWatched}>
+              <RemoveRedEyeOutlined></RemoveRedEyeOutlined>
+            </a>
           )}
         </div>
         <div className="d-flex align-items-center favorite-container p-3">
           {this.props.movie.isFavorite ? (
-            <Favorite onClick={this.onClickMarkAsUnFavorite}></Favorite>
+            <a href="#" onClick={this.onClickMarkAsUnFavorite}>
+              <Favorite></Favorite>
+            </a>
           ) : (
-            <FavoriteBorder
-              onClick={this.onClickMarkAsFavorite}
-            ></FavoriteBorder>
+            <a href="#" onClick={this.onClickMarkAsFavorite}>
+              <FavoriteBorder></FavoriteBorder>
+            </a>
           )}
         </div>
         <div className="d-flex align-items-center favorite-container p-3">
           {this.props.movie.rating ? (
-            <ThumbDownOutlined onClick={this.onClickMarkAsUnFavorite}></ThumbDownOutlined>
+            <a href="#" onClick={this.onClickMarkAsUnFavorite}>
+              <ThumbDownOutlined></ThumbDownOutlined>
+            </a>
           ) : (
-            <ThumbUpOutlined
-              onClick={this.onClickMarkAsFavorite}
-            ></ThumbUpOutlined>
+            <a href="#" onClick={this.onClickMarkAsFavorite}>
+              <ThumbUpOutlined></ThumbUpOutlined>
+            </a>
           )}
         </div>
       </div>
