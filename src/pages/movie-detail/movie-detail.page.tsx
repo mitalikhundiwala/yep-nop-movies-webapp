@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import format from "date-fns/format";
-import MaterialIcon from "material-icons-react";
+import {DateRange, Timer} from '@material-ui/icons';
 
+import RatingComponent from "../../components/rating/rating";
 import "./movie-detail.page.scss";
-
 import { startSetMovie } from "../../actions/movies";
 import Movie from "../../models/movie";
 import { IStore } from "../../store/configureStore";
@@ -29,45 +29,49 @@ export class MovieDetailPage extends Component<IProps> {
       };
       return (
         <>
-          <div className="card mb-3 mt-3 border-0">
+          <div className="card border-0">
             <div className="banner">
               <div style={sectionStyle} className="bg-poster"></div>
             </div>
 
             <div className="card-body movie-info-container">
               <div className="row">
-                <div className="col-3">
+                <div className="col-lg-2 col-md-3 left-container">
                   <div className="">
                     <img
                       src={this.props.movie.thumbnailImageURL}
-                      className="thumnail-image position-absolute"
+                      className="thumnail-image position-absolute img-fluid"
                       alt="..."
                     />
                   </div>
                 </div>
-                <div className="col-9">
-                  <div className="details">
+                <div className="col-lg-10 col-md-9 right-container">
+                  <RatingComponent movieId={this.props.movie.movieId}></RatingComponent>
+                  <div className="details mt-5">
                     <p className="h3 mb-3">{this.props.movie.name}</p>
 
                     <div className="mb-3 text-uppercase">
                       {this.props.movie.language}
                     </div>
                     <div className="mb-3 d-flex">
-                      <MaterialIcon icon="date_range" color="#ffffff" />{" "}
+                      {/* <MaterialIcon icon="date_range" color="#ffffff" />{" "} */}
+                      <DateRange></DateRange>
                       <span className="pl-1 pr-3">
                         {format(
                           new Date(this.props.movie.releaseDate),
                           "dd MMM, uuuu"
                         )}
                       </span>
-                      <MaterialIcon icon="timer" color="#ffffff" />{" "}
+                      {/* <MaterialIcon icon="timer" color="#ffffff" />{" "} */}
+                      <Timer></Timer>
                       <span className="pl-1">2 Hours</span>
                     </div>
                     {this.props.movie.genres.map(genre => (
                       <span className="badge mb-2 mr-2 p-2">{genre.name}</span>
                     ))}
                   </div>
-                  <details open className="mt-3">
+
+                  <details open className="info-container">
                     <summary>SYNOPSIS</summary>
                     <p>{this.props.movie.synopsis}</p>
                   </details>
