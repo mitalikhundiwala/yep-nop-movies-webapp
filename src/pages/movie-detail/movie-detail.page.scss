@@ -1,51 +1,75 @@
-.banner {
-    height: 320px;
-    overflow: hidden;
+@import "~bootstrap/scss/_functions.scss";
+@import "~bootstrap/scss/_variables.scss";
+@import "~bootstrap/scss/mixins/_breakpoints.scss";
 
-    .bg-poster {
-        height: 100%;
-        width: 100%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        display: block;
-        background-position: center center;
-        margin: 0 auto;
-        object-fit: cover;
-        transition: all .5s ease;
-        filter: blur(20px);
+.banner {
+  height: 320px;
+  overflow: hidden;
+
+  .bg-poster {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+    transition: all 0.5s ease;
+    filter: blur(20px);
+    background-position: center center;
+
+    @include media-breakpoint-down(sm) {
+      filter: unset;
+      background-position: unset;
     }
+  }
 }
 
 .thumnail-image {
-    width: 200px;
+  width: 200px;
 }
 
 .movie-info-container {
-    margin: -260px 0 0;
+  margin: -260px 0 0;
+
+  @include media-breakpoint-down(sm) {
+    margin: 0 0;
+  }
 }
 
 .details {
-    color: white;
-    
-    .badge {
-        border: 1px solid #ddd;
-        border-radius: 20px;
-        font-weight: 400;
-    }
+  color: white;
+  @include media-breakpoint-down(sm) {
+    color: $body-color;
+  }
+
+  .badge {
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-weight: 400;
+  }
 }
 
 .rating-panel {
-    background-color: #f9f8f8;
-    position: absolute;
-    width: 100%;
-    height: 90px;
-    top: 15rem;
+  background-color: #f9f8f8;
+  position: absolute;
+  width: 100%;
+  height: 90px;
+  top: 15rem;
+
+  @include media-breakpoint-only(xs) {
+    top: 13rem;
+  }
+
+  @include media-breakpoint-only(sm) {
+    top: 12rem;
+  }
 }
 
 .left-container {
-    z-index: 1;
+  z-index: 1;
 }
 
 .info-container {
-    margin-top: 8rem;
+  margin-top: 8rem;
 }

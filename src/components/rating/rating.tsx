@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   RemoveRedEye,
@@ -52,35 +53,33 @@ export class RatingComponent extends React.Component {
       <div className="rating-panel d-flex">
         <div className="d-flex align-items-center watch-container p-3">
           {this.props.movie.isWatched ? (
-            <a href="#" onClick={this.onClickMarkAsUnWatched}>
-              <RemoveRedEye></RemoveRedEye>
-            </a>
+            <Link to="#" onClick={this.onClickMarkAsUnWatched}><RemoveRedEye></RemoveRedEye></Link>
           ) : (
-            <a href="#" onClick={this.onClickMarkAsWatched}>
+            <Link to="#" onClick={this.onClickMarkAsWatched}>
               <RemoveRedEyeOutlined></RemoveRedEyeOutlined>
-            </a>
+            </Link>
           )}
         </div>
         <div className="d-flex align-items-center favorite-container p-3">
           {this.props.movie.isFavorite ? (
-            <a href="#" onClick={this.onClickMarkAsUnFavorite}>
+            <Link to="#" onClick={this.onClickMarkAsUnFavorite}>
               <Favorite></Favorite>
-            </a>
+            </Link>
           ) : (
-            <a href="#" onClick={this.onClickMarkAsFavorite}>
+            <Link to="#" onClick={this.onClickMarkAsFavorite}>
               <FavoriteBorder></FavoriteBorder>
-            </a>
+            </Link>
           )}
         </div>
         <div className="d-flex align-items-center favorite-container p-3">
           {this.props.movie.rating ? (
-            <a href="#" onClick={this.onClickMarkAsUnFavorite}>
+            <Link to="#" onClick={this.onClickMarkAsUnFavorite}>
               <ThumbDownOutlined></ThumbDownOutlined>
-            </a>
+            </Link>
           ) : (
-            <a href="#" onClick={this.onClickMarkAsFavorite}>
+            <Link to="#" onClick={this.onClickMarkAsFavorite}>
               <ThumbUpOutlined></ThumbUpOutlined>
-            </a>
+            </Link>
           )}
         </div>
       </div>

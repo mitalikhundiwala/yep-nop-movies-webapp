@@ -13,7 +13,7 @@ export const MovieListItem: FunctionComponent<Movie> = ({
   synopsis,
   genreString
 }) => (
-  <div className="col-sm-6 col-md-4 col-lg-3 pb-4">
+  <div className="col-sm-12 col-sm-6 col-md-4 col-lg-2 pb-4">
     <Link className="card-link" to={`/movies/${movieId}`}>
       <div className="card rounded border-0">
         <img src={poster_image} className="card-img-top " alt="..." />

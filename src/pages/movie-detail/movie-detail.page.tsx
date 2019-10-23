@@ -19,6 +19,7 @@ export class MovieDetailPage extends Component<IProps> {
   props: IProps;
 
   componentDidMount() {
+    console.log(this.state);
     this.props.startSetMovie();
   }
 
@@ -36,8 +37,8 @@ export class MovieDetailPage extends Component<IProps> {
 
             <div className="card-body movie-info-container">
               <div className="row">
-                <div className="col-lg-2 col-md-3 left-container">
-                  <div className="">
+                <div className="col-xl-2 col-lg-3 col-md-4 left-container">
+                  <div className="d-none d-md-block">
                     <img
                       src={this.props.movie.thumbnailImageURL}
                       className="thumnail-image position-absolute img-fluid"
@@ -45,9 +46,9 @@ export class MovieDetailPage extends Component<IProps> {
                     />
                   </div>
                 </div>
-                <div className="col-lg-10 col-md-9 right-container">
+                <div className="col-xl-10 col-lg-9 col-md-8 right-container">
                   <RatingComponent movieId={this.props.movie.movieId}></RatingComponent>
-                  <div className="details mt-5">
+                  <div className="details mt-md-5">
                     <p className="h3 mb-3">{this.props.movie.name}</p>
 
                     <div className="mb-3 text-uppercase">
