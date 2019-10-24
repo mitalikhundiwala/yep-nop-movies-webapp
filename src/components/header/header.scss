@@ -1,5 +1,16 @@
+@import "~bootstrap/scss/_functions.scss";
+@import "~bootstrap/scss/_variables.scss";
+@import "~bootstrap/scss/mixins/_breakpoints.scss";
+
 .user-photo {
-    width: 40px;
-    height: 40px;
-    border-radius: 80px;
+  width: 40px;
+  height: 40px;
+  border-radius: 80px;
+}
+
+.header-nav {
+  @include media-breakpoint-only(xs) {
+    padding: 0.5rem !important;
+    margin-top: 0.25rem !important;
+  }
 }

@@ -35,7 +35,7 @@ export const Header: FunctionComponent<IProps> = ({ startLogout, user }) => {
         <NavbarBrand href="/">Yep Nop Movies</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto" navbar>
+          <Nav className="ml-auto navbar-nav navbar-nav align-items-end header-nav" navbar>
             <NavItem className="d-block d-sm-none">{user.name}</NavItem>
             <NavItem>
               <Link className="d-block d-sm-none nav-link" to="#" onClick={startLogout}>
