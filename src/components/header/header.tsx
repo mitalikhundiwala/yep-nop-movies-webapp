@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   Collapse,
@@ -30,12 +31,18 @@ export const Header: FunctionComponent<IProps> = ({ startLogout, user }) => {
   const toggle = () => setIsOpen(!isOpen);
   return (
     <header className="header">
-      <Navbar color="light" light expand="md">
+      <Navbar color="light" light expand="sm">
         <NavbarBrand href="/">Yep Nop Movies</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto" navbar>
-            <UncontrolledDropdown nav inNavbar>
+          <Nav className="ml-auto navbar-nav navbar-nav align-items-end header-nav" navbar>
+            <NavItem className="d-block d-sm-none">{user.name}</NavItem>
+            <NavItem>
+              <Link className="d-block d-sm-none nav-link" to="#" onClick={startLogout}>
+                Logout
+              </Link>
+            </NavItem>
+            <UncontrolledDropdown nav inNavbar className="d-none d-sm-block">
               <DropdownToggle nav caret>
                 <img src={user.photoURL} className="user-photo" />
               </DropdownToggle>
@@ -43,9 +50,9 @@ export const Header: FunctionComponent<IProps> = ({ startLogout, user }) => {
                 <DropdownItem>{user.name}</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>
-                  <a className="nav-link" href="#" onClick={startLogout}>
+                  <Link className="nav-link" to="#" onClick={startLogout}>
                     Logout
-                  </a>
+                  </Link>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
@@ -63,7 +70,6 @@ const mapDispatchToProps = (dispatch): Partial<IProps> => ({
 });
 
 const mapStateToProps = (state: IStore): Partial<IProps> => {
-  console.log(state.auth.user);
   return {
     user: state.auth.user
   };

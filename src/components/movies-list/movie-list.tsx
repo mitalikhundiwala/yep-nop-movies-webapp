@@ -14,7 +14,7 @@ interface IProps {
 
 const MovieList: FunctionComponent<IProps> = props => {
   return (
-    <>
+    <div className="m-3">
       <p className="h3 mt-3 mb-3">Upcoming Movies</p>
 
       <div className="d-flex justify-content-center align-items-center">
