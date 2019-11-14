@@ -24,7 +24,7 @@ const MovieList: FunctionComponent<IProps> = props => {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
