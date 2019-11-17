@@ -11,6 +11,7 @@ import {
   ThumbDownOutlined,
   ThumbUpOutlined
 } from "@material-ui/icons";
+import { Button } from "@material-ui/core";
 import { useToasts } from "react-toast-notifications";
 
 import {
@@ -20,6 +21,7 @@ import {
   markAsUnWatched
 } from "../../actions/movies";
 import Movie from "../../models/movie";
+import "./rating.scss";
 
 interface IProps {
   markAsFavorite: (movieId) => Promise<Movie>;
@@ -31,65 +33,65 @@ interface IProps {
 }
 
 const RatingComponent = props => {
-  // const { addToast } = useToasts();
+  const { addToast } = useToasts();
 
   const onClickMarkAsFavorite = () => {
     props.markAsFavorite(props.movie.movieId).catch(error => {
-      // addToast(error.message, { appearance: "error" });
+      addToast(error.message, { appearance: "error" });
     });
   };
 
   const onClickMarkAsUnFavorite = () => {
     props.markAsUnFavorite(props.movie.movieId).catch(error => {
-      // addToast(error.message, { appearance: "error" });
+      addToast(error.message, { appearance: "error" });
     });
   };
 
   const onClickMarkAsWatched = () => {
     props.markAsWatched(props.movie.movieId).catch(error => {
-      // addToast(error.message, { appearance: "error" });
+      addToast(error.message, { appearance: "error" });
     });
   };
 
   const onClickMarkAsUnWatched = () => {
     props.markAsUnWatched(props.movie.movieId).catch(error => {
-      // addToast(error.message, { appearance: "error" });
+      addToast(error.message, { appearance: "error" });
     });
   };
 
   return (
     <div className="rating-panel d-flex">
-      <div className="d-flex align-items-center watch-container p-3">
+      <div className="d-flex align-items-center watch-container">
         {props.movie.isWatched ? (
-          <Link to="#" onClick={onClickMarkAsUnWatched}>
+          <Button onClick={onClickMarkAsUnWatched} className="rating-btn">
             <RemoveRedEye></RemoveRedEye>
-          </Link>
+          </Button>
         ) : (
-          <Link to="#" onClick={onClickMarkAsWatched}>
+          <Button onClick={onClickMarkAsWatched} className="rating-btn">
             <RemoveRedEyeOutlined></RemoveRedEyeOutlined>
-          </Link>
+          </Button>
         )}
       </div>
-      <div className="d-flex align-items-center favorite-container p-3">
+      <div className="d-flex align-items-center favorite-container">
         {props.movie.isFavorite ? (
-          <Link to="#" onClick={onClickMarkAsUnFavorite}>
+          <Button onClick={onClickMarkAsUnFavorite} className="rating-btn">
             <Favorite></Favorite>
-          </Link>
+          </Button>
         ) : (
-          <Link to="#" onClick={onClickMarkAsFavorite}>
+          <Button onClick={onClickMarkAsFavorite} className="rating-btn">
             <FavoriteBorder></FavoriteBorder>
-          </Link>
+          </Button>
         )}
       </div>
-      <div className="d-flex align-items-center favorite-container p-3">
+      <div className="d-flex align-items-center favorite-container">
         {props.movie.rating ? (
-          <Link to="#" onClick={onClickMarkAsUnFavorite}>
+          <Button onClick={onClickMarkAsUnFavorite} className="rating-btn">
             <ThumbDownOutlined></ThumbDownOutlined>
-          </Link>
+          </Button>
         ) : (
-          <Link to="#" onClick={onClickMarkAsFavorite}>
+          <Button onClick={onClickMarkAsFavorite} className="rating-btn">
             <ThumbUpOutlined></ThumbUpOutlined>
-          </Link>
+          </Button>
         )}
       </div>
     </div>
