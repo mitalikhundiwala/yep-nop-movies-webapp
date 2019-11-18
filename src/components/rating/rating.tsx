@@ -98,7 +98,7 @@ const RatingComponent = props => {
   );
 };
 
-const mapDispatchToProps = (dispatch, props: IProps) => {
+const mapDispatchToProps = (dispatch, props: Partial<IProps>) => {
   return {
     markAsFavorite: () => dispatch(markAsFavorite(props.movieId)),
     markAsUnFavorite: () => dispatch(markAsUnFavorite(props.movieId)),
@@ -107,7 +107,7 @@ const mapDispatchToProps = (dispatch, props: IProps) => {
   };
 };
 
-const mapStateToProps = (state, props: IProps) => {
+const mapStateToProps = (state, props: Partial<IProps>) => {
   return {
     movie: state.movies.entities[props.movieId]
   };

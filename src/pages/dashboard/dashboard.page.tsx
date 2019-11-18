@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { connect } from "react-redux";
-import MovieList from "../../components/movies-list/movie-list";
+import { useToasts } from "react-toast-notifications";
 
+import MovieList from "../../components/movies-list/movie-list";
 import { startSetMovies } from "../../actions/movies";
 import Movie from "../../models/movie";
 
@@ -9,16 +10,17 @@ interface IProps {
   startSetMovies: () => Promise<Movie[]>;
 }
 
-export class DashboardPage extends Component<IProps> {
-  props: IProps;
+const DashboardPage = (props: IProps) => {
+  const { addToast } = useToasts();
 
-  componentDidMount() {
-    this.props.startSetMovies();
-  }
-  render() {
-    return <MovieList></MovieList>;
-  }
-}
+  useEffect(() => {
+    props.startSetMovies().catch(error => {
+      addToast(error.message, { appearance: "error" });
+    });
+  }, []);
+
+  return <MovieList></MovieList>;
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -26,7 +28,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  undefined,
-  mapDispatchToProps
-)(DashboardPage);
+export default connect(undefined, mapDispatchToProps)(DashboardPage);
