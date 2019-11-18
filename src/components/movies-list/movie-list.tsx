@@ -12,7 +12,7 @@ interface IProps {
   movies: { [key: string]: Movie };
 }
 
-const MovieList: FunctionComponent<IProps> = props => {
+const MovieList: FunctionComponent<IProps> = (props: Partial<IProps>) => {
   return (
     <div className="m-3">
       <p className="h3 mt-3 mb-3">Upcoming Movies</p>
@@ -24,11 +24,11 @@ const MovieList: FunctionComponent<IProps> = props => {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-const mapStateToProps = (state: IStore, props) => {
+const mapStateToProps = (state: IStore, props: Partial<IProps>) => {
   return {
     movies: state.movies.entities
   };
