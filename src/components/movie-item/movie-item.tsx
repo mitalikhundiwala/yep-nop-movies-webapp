@@ -5,12 +5,11 @@ import { Link } from "react-router-dom";
 import format from "date-fns/format";
 import Movie from "../../models/movie";
 
-export const MovieListItem: FunctionComponent<Movie> = ({
+export const MovieListItem: FunctionComponent<Partial<Movie>> = ({
   movieId,
   name,
   poster_image,
   releaseDate,
-  synopsis,
   genreString
 }) => (
   <div className="col-sm-12 col-sm-6 col-md-4 col-lg-2 pb-4">
