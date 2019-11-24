@@ -5,21 +5,32 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html"
+    "build": "parcel build src/index.html",
+    "test": "jest --watch --config=jest.config.js",
+    "coverage": "jest --coverage"
   },
   "author": "Mitali Patel",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@types/date-fns": "^2.6.0",
+    "@types/enzyme": "^3.10.3",
+    "@types/jest": "^24.0.23",
     "@types/lodash": "^4.14.141",
     "@types/react": "^16.9.3",
     "@types/react-redux": "^7.1.4",
     "@types/react-router-dom": "^5.1.0",
+    "dotenv": "^8.2.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.9.0",
     "parcel-bundler": "^1.12.4",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-test-renderer": "^16.12.0",
     "sass": "^1.22.12",
+    "ts-jest": "^24.1.0",
     "typescript": "^3.6.3"
   },
   "dependencies": {

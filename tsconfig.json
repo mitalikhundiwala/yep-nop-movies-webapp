@@ -4,5 +4,5 @@
     "esModuleInterop": true,
     "target": "es5"
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "jest.setup.js"]
 }
